@@ -1,5 +1,11 @@
 # This code will collect photos and download them
-x = 0
+import os
 
-ip = "10.42.0.1"
+IP = input("What is the IP of the pi: ")
+password = input("What is the password: ")
+
+os.system("ssh xacademy@" + IP)
+
+os.system(password)
+
 
