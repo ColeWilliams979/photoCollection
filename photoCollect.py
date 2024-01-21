@@ -1,11 +1,33 @@
 # This code will collect photos and download them
 import os
+import paramiko
 
-IP = input("What is the IP of the pi: ")
+
+server = input("What is the IP of the pi: ")
+username = input("What is the username of the pi: ")
 password = input("What is the password: ")
 
-os.system("ssh xacademy@" + IP)
+photo_command = "libcamera-still -t 1 -o test{iteration}.jpg"
+download_command = "scp "+username+"@"+server+":/home/xacademy/test.jpg /Users/X\" \"Academy/photos"
 
-os.system(password)
+
+ssh = paramiko.SSHClient()
+ssh.connect(server, username=username, password=password)
+
+
+for i in range(10):
+    
+    ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(photo_command.format(iteration=i))
+    os.system(downlaod_command)
+    
+
+
+
+
+
+
+
+
+
 
 
