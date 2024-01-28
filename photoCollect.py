@@ -18,7 +18,7 @@ ssh.connect(server, username=username, password=password)
 for i in range(10):
     
     ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(photo_command.format(iteration=i))
-    os.system(downlaod_command)
+    os.system(download_command)
     
 
 
