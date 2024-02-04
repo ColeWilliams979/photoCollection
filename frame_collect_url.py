@@ -40,7 +40,7 @@ while True:
             bytes = bytes[b + 2:]
             i = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
             print("test1")
-            with open('out.jpg', 'wb') as f:
+            with open('frames\out.jpg', 'wb') as f:
                 f.write(jpg)
             print("test1")
             x += 1

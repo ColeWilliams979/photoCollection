@@ -2,7 +2,7 @@
 import os
 import paramiko
 
-
+print("deprecated")
 server = "10.1.10.147"
 username = "xacademy"
 password = "Gauss5050"
