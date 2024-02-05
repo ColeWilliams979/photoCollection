@@ -28,22 +28,24 @@ for i in range(12):
 stream = urllib.request.urlopen('http://10.1.10.147:8000/stream.mjpg')
 bytes = b''  # MAKE IT BYTES
 x = 0
-while True:
-    while x != 12:
-        bytes += stream.read(1024)
-        a = bytes.find(b'\xff\xd8')
-        b = bytes.find(b'\xff\xd9')
-        print("test")
-        if a != -1 and b != -1:
-            jpg = bytes[a:b + 2]
-            print("test1")
-            bytes = bytes[b + 2:]
-            i = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
-            print("test1")
-            with open('frames\out.jpg', 'wb') as f:
-                f.write(jpg)
-            print("test1")
-            x += 1
-            if cv2.waitKey(1) == 27:
+
+while x != 12:
+    bytes += stream.read(1024)
+    a = bytes.find(b'\xff\xd8')
+    b = bytes.find(b'\xff\xd9')
+    print("test")
+    sx=str(x)
+    if a != -1 and b != -1:
+        jpg = bytes[a:b + 2]
+        print("test1")
+        bytes = bytes[b + 2:]
+        i = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
+        print("test1")
+        fname ="frames\out"+sx+".jpg"
+        with open(fname, 'wb') as f:
+            f.write(jpg)
+        print("test1")
+        x += 1
+        if cv2.waitKey(1) == 27:
                 exit(0)
 
